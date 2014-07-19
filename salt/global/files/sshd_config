@@ -118,7 +118,7 @@ PasswordAuthentication no
 # Note that sshd uses pam_authenticate(3PAM) so the root (or any other) user
 # maybe denied access by a PAM module regardless of this setting.
 # Valid options are yes, without-password, no.
-PermitRootLogin yes
+PermitRootLogin without-password
 
 # sftp subsystem
 Subsystem       sftp    internal-sftp

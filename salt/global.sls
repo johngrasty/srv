@@ -5,7 +5,12 @@
     - mode: 744      # function declaration
   cmd:                # state declaration
     - run
-    
+
+/opt/custom/smf/salt-call.xml
+  file:
+    - managed
+    - source: salt://global/files/salt-call.xml
+
 /usbkey/ssh/sshd_config:
   file.managed:
     - source: salt://global/files/sshd_config
