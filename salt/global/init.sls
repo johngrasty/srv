@@ -24,6 +24,10 @@ ssh:
     - watch:
       - file: /usbkey/ssh/sshd_config
 
+hostname:
+  cmd.run:
+   - name: hostname "smartos.ggimissions.com" && hostname > /etc/nodename
+
 smtp-notify-fma:
   cmd.run:
    - name: svccfg setnotify problem-diagnosed,problem-updated mailto:johnpgrasty@gmail.com
@@ -31,3 +35,6 @@ smtp-notify-fma:
 smtp-notify-smf:
   cmd.run:
    - name: svccfg setnotify -g to-maintenance mailto:johnpgrasty@gmail.com
+
+include:
+  - global.img

@@ -8,5 +8,6 @@ tar xzvf salt-2014.1.7-10-g579cc0a-esky-smartos.tar.gz
 mkdir /opt/salt/srv
 cd /opt/salt/
 
-curl -k -L 
+mkdir /opt/custom/smf
+
 

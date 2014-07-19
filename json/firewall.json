@@ -1,0 +1,25 @@
+{
+  "alias": "firewall-nat",
+  "hostname": "nat.ggimissions.com",
+  "brand": "joyent",
+  "max_physical_memory": 256,
+  "dataset_uuid": "caac17a4-d512-11e3-9d41-b756aebcb18f",
+  "default_gateway": "172.16.147.2",
+  "nics": [
+    {
+      "nic_tag": "admin",
+      "ip": "172.16.147.201",
+      "netmask": "255.255.255.0",
+      "allow_ip_spoofing": "1",
+      "gateway": "172.16.147.2",
+      "primary": "1"
+    },
+    {
+      "nic_tag": "stub0",
+      "ip": "10.0.0.1",
+      "netmask": "255.255.255.0",
+      "allow_ip_spoofing": "1",
+      "gateway": "10.0.0.1"
+    }
+  ]
+}
