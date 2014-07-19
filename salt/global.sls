@@ -23,3 +23,11 @@ ssh:
     - running
     - watch:
       - file: /usbkey/ssh/sshd_config
+
+smtp-notify-fma:
+  cmd.run:
+   - name: svccfg setnotify problem-diagnosed,problem-updated mailto:johnpgrasty@gmail.com
+
+smtp-notify-smf:
+  cmd.run:
+   - name: svccfg setnotify -g to-maintenance mailto:johnpgrasty@gmail.com
