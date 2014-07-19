@@ -6,7 +6,7 @@
   cmd:                # state declaration
     - run
 
-/opt/custom/smf/salt-call.xml
+/opt/custom/smf/salt-call.xml:
   file:
     - managed
     - source: salt://global/files/salt-call.xml
