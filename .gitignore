@@ -1,0 +1,14 @@
+pillar/*ssl*.sls
+pillar/*key*.sls
+
+
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
