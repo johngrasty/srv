@@ -1,14 +1,17 @@
-ipf:               # ID declaration
-  cmd.run:                # state declaration
-    - name: /opt/salt/srv/salt/global/files/ipf.sh       # function declaration
-
-sshd:
-  /usbkey/ssh/sshd_config:
-    file.managed:
-      - source: salt://global/files/sshd_config
-      - user: root
-      - group: root
-      - mode: 644
+/opt/salt/srv/salt/global/files/ipf.sh:               # ID declaration
+  file:
+    - managed
+    - source: salt://global/files/ipf.sh
+    - mode: 744      # function declaration
+  cmd:                # state declaration
+    - run
+    
+/usbkey/ssh/sshd_config:
+  file.managed:
+    - source: salt://global/files/sshd_config
+    - user: root
+    - group: root
+    - mode: 644
 
 ssh:
   service:
