@@ -8,3 +8,4 @@ Base64_14:
 #       - 9ab3f722-d136-11e3-9f3a-6fcb23726ee3  #Percona 13.4.2
 #       - 4b46e5e4-f17c-11e3-9da1-17ebb4120b97  #Standard64 14.1.1
 #       - a2969206-d604-11e3-be79-dfd0c3676b44  #Ghost .4.2
+#       - 4b348706-e122-11e3-9cb4-9b2c5062255c  #nginx 1.5.12  (base 14.1.0)

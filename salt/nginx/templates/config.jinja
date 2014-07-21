@@ -1,0 +1,35 @@
+{% set nginx = pillar.get('nginx', {}) -%}
+{% set user = nginx.get('user', 'www') -%}
+{% set group = nginx.get('group', 'www') -%}
+user   {{ user }} {{ group }};
+worker_processes {{ grains['num_cpus'] }};
+worker_rlimit_nofile 100000;
+
+events {
+    # After increasing this value You probably should increase limit
+    # of file descriptors (for example in start_precmd in startup script)
+    worker_connections  2048;
+}
+
+http {
+    include       /opt/local/etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+
+    sendfile        on;
+
+    keepalive_timeout  65;
+
+    gzip  on;
+
+    open_file_cache max=10000 inactive=30s;
+    open_file_cache_valid    60s;
+    open_file_cache_min_uses 2;
+    open_file_cache_errors   on;
+    upstream backend {
+               server 127.0.0.1:9000;
+        }
+
+    include /opt/local/etc/nginx/sites-enabled/*;
+
+}

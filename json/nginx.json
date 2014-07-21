@@ -1,0 +1,17 @@
+{
+  "alias": "nginx",
+  "hostname": "nginx.needfaith.org",
+  "brand": "joyent",
+  "max_physical_memory": 512,
+  "dataset_uuid": "4b348706-e122-11e3-9cb4-9b2c5062255c",
+  "resolvers": ["8.8.8.8", "208.67.220.220"],
+  "default_gateway": "10.0.0.1",
+  "nics": [
+    {
+      "nic_tag": "stub0",
+      "ip": "10.0.0.100",
+      "netmask": "255.255.255.0",
+      "gateway": "10.0.0.1"
+    }
+  ]
+}

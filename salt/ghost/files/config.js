@@ -6,7 +6,7 @@ config = {
         url: 'http://needfaith.org',
         mail: {
           transport: 'sendmail',
-          fromaddress: 'ghost@10.0.0.2',
+          fromaddress: 'ghost@needfaith.org',
           options: {}
         },
         database: {
