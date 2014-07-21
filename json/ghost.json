@@ -1,0 +1,17 @@
+{
+  "alias": "john-ghost",
+  "hostname": "node.needfaith.org",
+  "brand": "joyent",
+  "max_physical_memory": 256,
+  "dataset_uuid": "a2969206-d604-11e3-be79-dfd0c3676b44",
+  "resolvers": ["8.8.8.8", "208.67.220.220"],
+  "default_gateway": "10.0.0.1",
+  "nics": [
+    {
+      "nic_tag": "stub0",
+      "ip": "10.0.0.2",
+      "netmask": "255.255.255.0",
+      "gateway": "10.0.0.1"
+    }
+  ]
+}

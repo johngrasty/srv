@@ -1,0 +1,25 @@
+{
+  "brand": "kvm",
+  "alias": "freebsd",
+  "vcpus": 2,
+  "autoboot": false,
+  "ram": 4096,
+  "resolvers": ["8.8.8.8", "8.8.4.4"],
+  "disks": [
+    {
+      "boot": true,
+      "model": "virtio",
+      "size": 204800
+    }
+  ],
+  "nics": [
+          {
+      "nic_tag": "admin",
+      "mac": "00:50:56:0b:9f:ed",
+      "model": "virtio",
+      "ip": "192.99.141.245",
+      "netmask": "255.255.0.0",
+      "gateway": "192.99.201.254"
+    }
+  ]
+}

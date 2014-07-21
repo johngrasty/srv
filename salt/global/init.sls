@@ -28,6 +28,12 @@ hostname:
   cmd.run:
    - name: hostname "smartos.ggimissions.com" && hostname > /etc/nodename
 
+smartos.ggimissions.com:
+  host.present:
+    - ip: 
+      - 192.99.201.111
+      - 127.0.0.1
+
 smtp-notify-fma:
   cmd.run:
    - name: svccfg setnotify problem-diagnosed,problem-updated mailto:johnpgrasty@gmail.com
