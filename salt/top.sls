@@ -5,3 +5,8 @@ base:
     - nat
   'nginx*':
     - nginx
+    - nginx.needfaith
+  'mysql*':
+    - mysql
+  'ghost*':
+    - ghost

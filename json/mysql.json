@@ -1,0 +1,25 @@
+{
+  "alias": "mysql",
+  "hostname": "mysql.ggimissions.com",
+  "brand": "joyent",
+  "max_physical_memory": 4096,
+  "dataset_uuid": "d34c301e-10c3-11e4-9b79-5f67ca448df0",
+  "resolvers": ["8.8.8.8", "208.67.220.220"],
+  "delegate_dataset": true,
+  "default_gateway": "10.0.0.1",
+  "nics": [
+    {
+      "nic_tag": "stub0",
+      "ip": "10.0.0.4",
+      "netmask": "255.255.255.0",
+      "gateway": "10.0.0.1"
+    }
+  ],
+  "customer_metadata": {
+    "salt-master": "10.0.0.101",
+    "salt-id": "mysql.ggimissions.com"
+  },
+  "internal_metadata": {
+    "mysql_pw": "CMQiqp3hkWECUUuFVPRX3,aH"
+  }
+}

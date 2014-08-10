@@ -1,0 +1,24 @@
+{
+  "brand": "kvm",
+  "alias": "openbsd",
+  "vcpus": 2,
+  "autoboot": false,
+  "ram": 4096,
+  "resolvers": ["8.8.8.8", "8.8.4.4"],
+  "disks": [
+    {
+      "boot": true,
+      "model": "virtio",
+      "size": 102400
+    }
+  ],
+  "nics": [
+          {
+      "nic_tag": "stub0",
+      "model": "virtio",
+      "ip": "10.0.0.201",
+      "netmask": "255.255.0.0",
+      "gateway": "192.99.201.254"
+    }
+  ]
+}

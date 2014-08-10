@@ -1,15 +1,15 @@
 {
-  "alias": "network-test",
-  "hostname": "network-test.ggimissions.com",
+  "alias": "base-14-2",
+  "hostname": "base.ggimissions.com",
   "brand": "joyent",
-  "max_physical_memory": 256,
-  "dataset_uuid": "caac17a4-d512-11e3-9d41-b756aebcb18f",
+  "max_physical_memory": 1024,
+  "dataset_uuid": "d34c301e-10c3-11e4-9b79-5f67ca448df0",
   "resolvers": ["8.8.8.8", "208.67.220.220"],
   "default_gateway": "10.0.0.1",
   "nics": [
     {
       "nic_tag": "stub0",
-      "ip": "10.0.0.101",
+      "ip": "10.0.0.160",
       "netmask": "255.255.255.0",
       "gateway": "10.0.0.1"
     }

@@ -1,5 +1,7 @@
 base:
   'nginx*':
     - ssl
-  'db*':
+  'mysql*':
     - mysql
+  'ghost*':
+    - ghost

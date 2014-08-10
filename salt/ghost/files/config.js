@@ -10,14 +10,17 @@ config = {
           options: {}
         },
         database: {
-            client: 'sqlite3',
-            connection: {
-                filename: path.join(__dirname, '/content/data/ghost.db')
-            },
-            debug: false
+          client: 'mysql',
+          connection: {
+            host     : '10.0.0.4',
+            user     : 'john_ghost',
+            password : 'uMd84g4diyUMkeB2LeMMkniW',
+            database : 'needfaith_ghost',
+            charset  : 'utf8'
+          }
         },
         server: {
-            host: '127.0.0.1',
+            host: '10.0.0.2',
             port: '2368'
         },
         paths: {

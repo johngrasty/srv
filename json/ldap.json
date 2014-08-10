@@ -1,6 +1,6 @@
 {
-  "alias": "network-test",
-  "hostname": "network-test.ggimissions.com",
+  "alias": "ldap",
+  "hostname": "ldap.ggimissions.com",
   "brand": "joyent",
   "max_physical_memory": 256,
   "dataset_uuid": "caac17a4-d512-11e3-9d41-b756aebcb18f",
@@ -9,7 +9,7 @@
   "nics": [
     {
       "nic_tag": "stub0",
-      "ip": "10.0.0.101",
+      "ip": "10.0.0.102",
       "netmask": "255.255.255.0",
       "gateway": "10.0.0.1"
     }

@@ -15,16 +15,10 @@ http {
     include       /opt/local/etc/nginx/mime.types;
     default_type  application/octet-stream;
 
-    log_format logentry '[$time_local] IP:$remote_addr - USER:$remote_user  '
-                    'REQUEST:"$request" STATUS:$status BYTES_SENT:$body_bytes_sent '
-                    'REFERER:"$http_referer" USER_AGENT:"$http_user_agent"';
-
-
-    access_log /var/log/nginx/access.log logentry;
 
     sendfile        on;
 
-    keepalive_timeout  70;
+    keepalive_timeout  65;
 
     gzip  on;
 

@@ -1,8 +1,8 @@
 {
-  "alias": "network-test",
-  "hostname": "network-test.ggimissions.com",
+  "alias": "salt-master",
+  "hostname": "salt-master.ggimissions.com",
   "brand": "joyent",
-  "max_physical_memory": 256,
+  "max_physical_memory": 512,
   "dataset_uuid": "caac17a4-d512-11e3-9d41-b756aebcb18f",
   "resolvers": ["8.8.8.8", "208.67.220.220"],
   "default_gateway": "10.0.0.1",
@@ -12,6 +12,13 @@
       "ip": "10.0.0.101",
       "netmask": "255.255.255.0",
       "gateway": "10.0.0.1"
+    }
+  ],
+  "filesystems":[
+    {
+      "type": "lofs",
+      "source": "/opt/salt/srv",
+      "target": "/opt/salt/srv"
     }
   ]
 }

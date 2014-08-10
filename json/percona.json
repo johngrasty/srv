@@ -1,9 +1,9 @@
 {
-  "alias": "network-test",
-  "hostname": "network-test.ggimissions.com",
+  "alias": "percona",
+  "hostname": "db.ggimissions.com",
   "brand": "joyent",
-  "max_physical_memory": 256,
-  "dataset_uuid": "caac17a4-d512-11e3-9d41-b756aebcb18f",
+  "max_physical_memory": 4096,
+  "dataset_uuid": "9ab3f722-d136-11e3-9f3a-6fcb23726ee3",
   "resolvers": ["8.8.8.8", "208.67.220.220"],
   "default_gateway": "10.0.0.1",
   "nics": [

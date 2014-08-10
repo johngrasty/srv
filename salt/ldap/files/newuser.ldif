@@ -1,0 +1,12 @@
+dn: uid=msanabria,ou=people,dc=ops,dc=ggimissions,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: Miguel Sanabria
+sn: Sanabria
+l: Alpharetta
+mail: sanabmiguel@gmail.com
+mobile: 404 432-9230
+title: Pastor
+uid: msanabria

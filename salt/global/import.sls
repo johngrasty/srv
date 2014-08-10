@@ -9,3 +9,5 @@ Base64_14:
 #       - 4b46e5e4-f17c-11e3-9da1-17ebb4120b97  #Standard64 14.1.1
 #       - a2969206-d604-11e3-be79-dfd0c3676b44  #Ghost .4.2
 #       - 4b348706-e122-11e3-9cb4-9b2c5062255c  #nginx 1.5.12  (base 14.1.0)
+#       - bb41287c-e02a-11e3-aa6b-db678b82f5fc  #Java 14.1.  base for pwd
+#       - d34c301e-10c3-11e4-9b79-5f67ca448df0  #Base 14.2
