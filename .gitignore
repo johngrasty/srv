@@ -13,3 +13,4 @@ pillar/mysql*
 .Trashes
 ehthumbs.db
 Thumbs.db
+sftp-config.json
