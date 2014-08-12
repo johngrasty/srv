@@ -80,6 +80,10 @@ then
     echo "Error, no snapshots found for $bkname!"
     list_named_snaps $bkname
     exit 1
+    if [ "$num_snaps" -eq 1 -a "x$DELETE_OUTDATED" != x ]
+        then
+            echo "Clearing old zbk-${bkname}* sequence..."
+            rm /backups/zbk-${bkname}*
 elif [ $num_snaps -eq 1 ]
 then
     # first snapshot. Send full
