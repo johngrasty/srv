@@ -5,3 +5,4 @@ base:
     - mysql
   'ghost*':
     - ghost
+    - nfs

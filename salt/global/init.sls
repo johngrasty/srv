@@ -28,11 +28,11 @@ hostname:
   cmd.run:
    - name: hostname "smartos.ggimissions.com" && hostname > /etc/nodename
 
-smartos.ggimissions.com:
+set_the_hosts_file:
   host.present:
-    - ip: 
-      - 192.99.201.111
-      - 127.0.0.1
+    - ip: 192.99.201.111
+    - name: smartos
+
 
 smtp-notify-fma:
   cmd.run:

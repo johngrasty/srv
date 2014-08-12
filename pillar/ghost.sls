@@ -5,3 +5,8 @@ user:
   root:
     password: $5$wnXXEgjl$Bn9ROJafA2j5AWmwiCgNZZ6GD0svznpzTDxe99H6NJA
     enforce_password: False
+
+server_name: ovh1
+
+nfs:
+  suffix: john-ghost

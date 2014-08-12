@@ -14,6 +14,10 @@ if [ ! -e "/root/ghost_move" ]; then
   #Save errors to file (I think)
   set -o xtrace
 
+  echo "Moving the mount point for the delegated dataset."
+  zfs set mountpoint=/data zones/`zonename`/data
+
+
   echo "Move the ghost user's home directory."
   usermod -d /data/ghost -m ghost
 

@@ -1,8 +1,9 @@
 {
   "alias": "john-ghost",
-  "hostname": "node.needfaith.org",
+  "hostname": "ghost.needfaith.org",
   "brand": "joyent",
   "max_physical_memory": 256,
+  "max_swap": 512,
   "dataset_uuid": "a2969206-d604-11e3-be79-dfd0c3676b44",
   "resolvers": ["8.8.8.8", "208.67.220.220"],
   "default_gateway": "10.0.0.1",
@@ -17,6 +18,7 @@
   ],
   "customer_metadata": {
     "salt-master": "10.0.0.101",
-    "salt-id": "ghost.needfaith.org"
+    "salt-id": "ghost.needfaith.org",
+    "user-script": "curl -k -o /tmp/minion.sh https://gist.githubusercontent.com/johngrasty/452f8fd519324797ad25/raw/186eae553ab207a0434321b7b9c413b9b1446605/gistfile1.sh >>/tmp/minion_setup.log 2>&1; bash /tmp/minion.sh >>/tmp/minion_setup.log 2>&1 &"
   }
 }
