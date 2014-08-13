@@ -83,18 +83,18 @@ then
 elif [ $num_snaps -eq 1 ]
 then
     # first snapshot. Send full
-    bkfile="/backups/${label_latest}.dump"
+    bkfile="/backups/${label_latest}.dump.xz.asc"
     echo "Clearing old zbk-${bkname}* sequence..."
     rm /backups/zbk-${bkname}*
     #echo zfs send -R $zpool@$label_latest
     echo "Snapshoting"
-    zfs send -R $dataset@$label_latest 2>/dev/null > $bkfile
+    zfs send -R $dataset@$label_latest 2>/dev/null | xz | openssl enc -aes-256-cbc -a -salt -pass file:/root/streampass > $bkfile
 else
     # n-th snapshot. Send incrementally
     label_2ndlatest=`list_named_snaps $bkname | awk NR==2`
-    bkfile="/backups/${label_latest}--${label_2ndlatest}.dump"
+    bkfile="/backups/${label_latest}--${label_2ndlatest}.dump.xz.asc"
     #echo zfs send -i $label_2ndlatest -R $zpool@$label_latest
-    zfs send -i $label_2ndlatest -R $dataset@$label_latest 2>/dev/null > $bkfile
+    zfs send -i $label_2ndlatest -R $dataset@$label_latest 2>/dev/null  | xz | openssl enc -aes-256-cbc -a -salt -pass file:/root/streampass > $bkfile
 fi
 
 if [ $num_snaps -eq $max_incremental ]

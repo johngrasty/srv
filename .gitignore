@@ -1,6 +1,6 @@
 pillar/*ssl*.sls
 pillar/*key*.sls
-pillar/mysql*
+pillar/*
 
 
 

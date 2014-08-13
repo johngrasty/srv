@@ -1,5 +1,15 @@
+
+
 include:
   - backups.nfs
+
+#Backups password
+/root/streampass:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 600
+    - contents_pillar: bu_key
 
 #Install the scripts
 
