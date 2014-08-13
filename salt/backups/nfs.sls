@@ -24,14 +24,14 @@ nfs/client:
     - dir_mode: 755
     - file_mode: 644
     - owner: admin
-    - group: 100
+    - group: adm
     - makedirs: True
     - clean: False
 
 /etc/vfstab:
   file.append:
     - text:
-      - {{ salt['pillar.get']('server:ovh1:ip')}}:{{ salt['pillar.get']('server:ovh1:path')}}/{{ salt['pillar.get']('nfs:suffix')}} - /backups nfs - yes -
+      - {{ salt['pillar.get']('server:ovh1:ip')}}:{{ salt['pillar.get']('server:ovh1:path')}}/{{ salt['pillar.get']('nfs:suffix')}} -  /backups nfs - yes -
 
 
 

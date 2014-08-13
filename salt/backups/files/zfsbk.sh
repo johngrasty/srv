@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /usr/bin/bash
 
 # change this to the name of your ZFS pool. Or set ZPOOL envvar at runtime
 zpool=${ZPOOL:-"zones"}
@@ -80,15 +80,14 @@ then
     echo "Error, no snapshots found for $bkname!"
     list_named_snaps $bkname
     exit 1
-    if [ "$num_snaps" -eq 1 -a "x$DELETE_OUTDATED" != x ]
-        then
-            echo "Clearing old zbk-${bkname}* sequence..."
-            rm /backups/zbk-${bkname}*
 elif [ $num_snaps -eq 1 ]
 then
     # first snapshot. Send full
     bkfile="/backups/${label_latest}.dump"
+    echo "Clearing old zbk-${bkname}* sequence..."
+    rm /backups/zbk-${bkname}*
     #echo zfs send -R $zpool@$label_latest
+    echo "Snapshoting"
     zfs send -R $dataset@$label_latest 2>/dev/null > $bkfile
 else
     # n-th snapshot. Send incrementally

@@ -3,6 +3,7 @@ base:
     - ssl
   'mysql*':
     - mysql
+    - nfs
   'ghost*':
     - ghost
     - nfs

@@ -3,10 +3,16 @@ base:
     - global
   'nat*':
     - nat
+    - email-notifications
   'nginx*':
     - nginx
     - nginx.needfaith
+    - email-notifications
   'mysql*':
     - mysql
+    - backups
+    - email-notifications
   'ghost*':
     - ghost
+    - backups
+    - email-notifications
