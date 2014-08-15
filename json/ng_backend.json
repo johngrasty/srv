@@ -1,0 +1,24 @@
+{
+  "alias": "ng_backend1",
+  "hostname": "ng_backend1.needfaith.org",
+  "brand": "joyent",
+  "max_physical_memory": 4096,
+  "dataset_uuid": "d34c301e-10c3-11e4-9b79-5f67ca448df0",
+  "resolvers": ["8.8.8.8", "208.67.220.220"],
+  "delegate_dataset": true,
+  "quota": 200,
+  "default_gateway": "10.0.0.1",
+  "nics": [
+    {
+      "nic_tag": "stub0",
+      "ip": "10.0.0.99",
+      "netmask": "255.255.255.0",
+      "gateway": "10.0.0.1"
+    }
+  ],
+  "customer_metadata": {
+    "salt-master": "10.0.0.101",
+    "salt-id": "ng_backend1",
+    "user-script" : "sleep 10; curl -k -o /root/minion.sh https://gist.githubusercontent.com/johngrasty/452f8fd519324797ad25/raw/98daf317ae1d48bd0a5edf330a4b402985629588/gistfile1.sh; bash /root/minion.sh >/tmp/minion_setup.log 2>&1"
+  }
+}
