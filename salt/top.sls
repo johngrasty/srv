@@ -16,3 +16,9 @@ base:
     - ghost
     - backups
     - email-notifications
+  'icecast*':
+    - email-notifications
+    - icecast
+  'ng_backend*':
+    - email-notifications
+    - ng_backend
