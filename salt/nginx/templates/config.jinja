@@ -1,9 +1,15 @@
+### Manaaged by Salt - 2014-08-14 #####
+
 {% set nginx = pillar.get('nginx', {}) -%}
 {% set user = nginx.get('user', 'www') -%}
 {% set group = nginx.get('group', 'www') -%}
-user   {{ user }} {{ group }};
-worker_processes {{ grains['num_cpus'] }};
-worker_rlimit_nofile 100000;
+
+user                    {{ user }} {{ group }};
+worker_processes        {{ grains['num_cpus'] }};
+worker_rlimit_nofile    100000;
+
+pid        /var/run/nginx.pid;
+
 
 events {
     # After increasing this value You probably should increase limit
@@ -19,22 +25,58 @@ http {
                     'REQUEST:"$request" STATUS:$status BYTES_SENT:$body_bytes_sent '
                     'REFERER:"$http_referer" USER_AGENT:"$http_user_agent"';
 
+    log_format le_json '"time": "$time_iso8601", '
+             '"remote_addr": "$remote_addr", '
+             '"remote_user": "$remote_user", '
+             '"body_bytes_sent": "$body_bytes_sent", '
+             '"request_time": "$request_time", '
+             '"status": "$status", '
+             '"request": "$request", '
+             '"request_method": "$request_method", '
+             '"http_referrer": "$http_referer", '
+             '"http_user_agent": "$http_user_agent"';
 
-    access_log /var/log/nginx/access.log logentry;
+
+    access_log              /var/log/nginx/access.log le_json;
+    error_log               /var/log/nginx/error.log warn;
+
+    ssl_session_timeout     10m;
+    ssl_session_cache       shared:SSL:10m;
+    ssl_dhparam             /opt/local/etc/nginx/ssl/dhparam.pem;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers 'ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES128-SHA256:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-SHA256:AES128-SHA256:AES256-SHA:AES128-SHA:DES-CBC3-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4';
+
 
     sendfile        on;
 
     keepalive_timeout  70;
 
-    gzip  on;
+    proxy_buffering on;
+    proxy_buffers 32 16k;
 
-    open_file_cache max=10000 inactive=30s;
+    gzip                    on;
+    gzip_disable            "msie6";
+    gzip_comp_level         6;
+    gzip_vary               on;
+    gzip_proxied            any;
+    gzip_buffers            16 8k;
+    gzip_types       text/plain application/xml text/css text/js text/xml application/x-javascript text/javascript application/json application/xml+rss;
+
+
+    open_file_cache          max=10000 inactive=30s;
     open_file_cache_valid    60s;
     open_file_cache_min_uses 2;
     open_file_cache_errors   on;
-    upstream backend {
-               server 127.0.0.1:9000;
+
+    {% for upstream, args in pillar['upstreams'].iteritems() %}
+
+    upstream {{ upstream }} {
+                {% for ip in args['host'] %}
+                server {{ ip }};
+                {% endfor %}
         }
+
+    {% endfor %}
 
     include /opt/local/etc/nginx/sites-enabled/*;
 

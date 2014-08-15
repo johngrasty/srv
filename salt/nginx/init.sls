@@ -1,17 +1,5 @@
 nginx:
-  pkg:
-    - installed
-
-nginx_config:
-  service:
-    - name: nginx
-    - enabled
-    - restart: True
-    - watch:
-      - file: /opt/local/etc/nginx/nginx.conf
-      - file: /opt/local/etc/nginx/sites-enabled/*
-      - pkg: nginx
-
+  pkg.installed
 
 /opt/local/etc/nginx/nginx.conf:
   file:
@@ -25,20 +13,34 @@ nginx_config:
 /opt/local/etc/nginx/sites-enabled:
   file.directory:
     - require:
-        - pkg: nginx
+      - pkg: nginx
 
 /opt/local/etc/nginx/ssl:
   file.directory:
     - require:
-        - pkg: nginx
+      - pkg: nginx
+
+/opt/local/etc/nginx/ssl/dhparam.pem:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 600
+    - contents_pillar: ssl_server:dhparam
 
 /opt/local/etc/nginx/sites-available:
   file.directory:
     - require:
-        - pkg: nginx
+      - pkg: nginx
 
-
-
+nginx_config:
+  service:
+    - name: nginx
+    - enabled
+    - restart: True
+    - watch:
+      - file: /opt/local/etc/nginx/nginx.conf
+      - file: /opt/local/etc/nginx/sites-enabled/*
+      - pkg: nginx
 
 
 # /opt/local/etc/nginx/ssl/vbm.key:
