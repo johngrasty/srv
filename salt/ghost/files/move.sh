@@ -6,7 +6,7 @@ export PATH
 
 
  
-if [ ! -e "/root/ghost_move" ]; then
+if [ ! -e "/data/ghost/ghost_move" ]; then
   # Control will enter here if file doesn't exist.
   #Exit on error rather than plowing on.
   set -o errexit
@@ -28,5 +28,5 @@ if [ ! -e "/root/ghost_move" ]; then
 
   svccfg setnotify -g to-maintenance mailto:johnpgrasty@gmail.com
 
-  touch /root/ghost_move
+  touch /data/ghost/ghost_move
 fi

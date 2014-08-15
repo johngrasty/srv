@@ -6,7 +6,7 @@ export PATH
 
 
  
-if [ ! -e "/root/zfs_create" ]; then
+if [ ! -e "/data/backups/zfs_move" ]; then
   # Control will enter here if file doesn't exist.
   #Exit on error rather than plowing on.
   set -o errexit
@@ -25,5 +25,5 @@ if [ ! -e "/root/zfs_create" ]; then
   zfs create -o mountpoint=/data/mysql-logs zones/`zonename`/data/mysql-logs
 
 
-  touch /root/zfs_create
+  touch /data/backups/zfs_move
 fi
