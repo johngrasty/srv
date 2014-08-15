@@ -11,10 +11,10 @@ ipv4-forwarding:
     - watch:
       - file: /etc/ipf/ipnat.conf
 
-route:
-  service:
-    - running
-    - enable: True
+# route:
+#   service:
+#     - running
+#     - enable: True
 
 /etc/ipf/ipf.conf:
   file:
