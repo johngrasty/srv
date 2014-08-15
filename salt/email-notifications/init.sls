@@ -22,8 +22,8 @@ fmd:
 
 sendmail-client:
   service:
-    - dead
-    - enable: False
+    - running
+    - enable: True
 
 smtp-notify:
   service:
