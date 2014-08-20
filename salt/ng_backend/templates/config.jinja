@@ -63,15 +63,12 @@ http {
     open_file_cache_min_uses 2;
     open_file_cache_errors   on;
 
-    fastcgi_cache_path       /tmp/php levels=1:2 keys_zone=WORDPRESS:10m inactive=80m max_size=199M;
-    fastcgi_cache_key       "$scheme$request_method$host$request_uri";
-    fastcgi_cache_use_stale error timeout invalid_header http_500;
     fastcgi_read_timeout    300; 
 
 
 
 
-    upstream backend {
+    upstream php_backend {
                server 127.0.0.1:9000;
         }
 

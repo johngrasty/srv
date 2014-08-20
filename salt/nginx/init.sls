@@ -32,6 +32,10 @@ nginx:
     - require:
       - pkg: nginx
 
+include:
+  - nginx.ggimissions
+  - nginx.needfaith
+
 nginx_config:
   service:
     - name: nginx
@@ -39,20 +43,4 @@ nginx_config:
     - restart: True
     - watch:
       - file: /opt/local/etc/nginx/nginx.conf
-      - file: /opt/local/etc/nginx/sites-enabled/*
       - pkg: nginx
-
-
-# /opt/local/etc/nginx/ssl/vbm.key:
-#   file.managed:
-#     - user: root
-#     - group: root
-#     - mode: 600
-#     - contents_pillar: vision:key
-
-# /opt/local/etc/nginx/ssl/vbm.crt:
-#   file.managed:
-#     - user: root
-#     - group: root
-#     - mode: 600
-#     - contents_pillar: vision:crt

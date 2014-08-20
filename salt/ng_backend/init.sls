@@ -5,15 +5,14 @@ nginx:
   pkg:
     - installed
 
-nginx_config:
-  service:
-    - name: nginx
-    - enabled
-    - restart: True
-    - watch:
-      - file: /opt/local/etc/nginx/nginx.conf
-      - file: /opt/local/etc/nginx/sites-enabled/*
-      - pkg: nginx
+/data/www:
+  file.directory:
+    - user: www
+    - group: www
+    - dir_mode: 755
+    - file_mode: 644
+    - require:
+        - pkg: nginx
 
 
 /opt/local/etc/nginx/nginx.conf:
@@ -23,7 +22,7 @@ nginx_config:
     - user: root
     - group: root
     - mode: 440
-    - source: salt://nginx/templates/config.jinja
+    - source: salt://ng_backend/templates/config.jinja
 
 /opt/local/etc/nginx/sites-enabled:
   file.directory:
@@ -40,17 +39,21 @@ nginx_config:
     - require:
         - pkg: nginx
 
-# /opt/local/etc/nginx/ssl/dhparam.pem:
-#   file.managed:
-#     - user: root
-#     - group: root
-#     - mode: 600
-#     - contents_pillar: ng_backend:dhparam
 
 /opt/local/etc/nginx/sites-available:
   file.directory:
     - require:
         - pkg: nginx
+
+nginx_config:
+  service:
+    - name: nginx
+    - enabled
+    - restart: True
+    - watch:
+      - file: /opt/local/etc/nginx/nginx.conf
+      - file: /opt/local/etc/nginx/sites-enabled/*
+      - pkg: nginx
 
 php-fpm-packages:
   pkg.installed:
