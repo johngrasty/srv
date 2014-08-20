@@ -1,0 +1,17 @@
+# Authentication for passwd-file users. Included from 10-auth.conf.
+#
+# passwd-like file with specified location.
+# <doc/wiki/AuthDatabase.PasswdFile.txt>
+
+passdb {
+  driver = passwd-file
+  args = username_format=%u /opt/local/etc/dovecot/domains/%d/users
+}
+
+userdb {
+  driver = passwd-file
+  args = username_format=%u /opt/local/etc/dovecot/domains/%d/users
+
+  # Default fields that can be overridden by passwd-file
+  default_fields = uid=mail gid=mail home=/data/mail/mail_homes/%d/%Lu
+}
