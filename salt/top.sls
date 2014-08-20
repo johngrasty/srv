@@ -6,7 +6,6 @@ base:
     - email-notifications
   'nginx*':
     - nginx
-    - nginx.needfaith
     - email-notifications
   'mysql*':
     - mysql
@@ -22,3 +21,15 @@ base:
   'ng_backend*':
     - email-notifications
     - ng_backend
+    - ng_backend.ggimissions
+  'assp*':
+    - assp
+    - email-notifications
+    - backups
+  'opensmtpd*':
+    - opensmtpd
+  'dovecot*':
+    - backups
+    - email-notifications
+    - dovecot
+    
