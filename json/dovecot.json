@@ -1,0 +1,23 @@
+{
+  "alias": "dovecot",
+  "hostname": "imap.ggimissions.com",
+  "brand": "joyent",
+  "max_physical_memory": 512,
+  "dataset_uuid": "bae9b95e-10c0-11e4-89d4-9fb9155d8bda",
+  "resolvers": ["8.8.8.8", "208.67.220.220"],
+  "default_gateway": "10.0.0.1",
+  "delegate_dataset": true,
+  "nics": [
+    {
+      "nic_tag": "stub0",
+      "ip": "10.0.0.97",
+      "netmask": "255.255.255.0",
+      "gateway": "10.0.0.1"
+    }
+  ],
+  "customer_metadata": {
+    "salt-master": "10.0.0.101",
+    "salt-id": "dovecot1",
+    "user-script" : "sleep 10; curl -k -o /root/minion.sh https://gist.githubusercontent.com/johngrasty/452f8fd519324797ad25/raw/98daf317ae1d48bd0a5edf330a4b402985629588/gistfile1.sh; bash /root/minion.sh >/tmp/minion_setup.log 2>&1"
+  }
+}

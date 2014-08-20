@@ -1,0 +1,37 @@
+{
+  "brand": "kvm",
+  "autoboot": true,
+  "alias": "opensmtpd",
+  "hostname": "opensmtpd.ggimissions.com",
+  "resolvers": [
+    "8.8.8.8",
+    "208.67.220.220"
+  ],
+  "ram": 512,
+  "cpu_type": "qemu64",
+  "nics": [
+    {
+      "nic_tag": "stub0",
+      "ip": "10.0.0.98",
+      "netmask": "255.255.255.0",
+      "gateway": "10.0.0.1",
+      "model": "virtio"
+    }
+  ],
+  "disks": [
+    {
+      "boot": true,
+      "image_uuid": "8681d07a-6cc4-4984-8d1b-bb61a2a73d14",
+      "image_size": 10240,
+      "model": "virtio"
+    }
+  ],
+  "customer_metadata": {
+    "overwrite_root_akeys": "OVERWRITE",
+    "root_authorized_keys": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8ACdRxydRG9BIE+hZZh6w9CnrgB+XpF+azFJrIt9IzUuC1RUTW/9aOckZlxCfueQ250ZfmMjfEu0fKHkvreYio+Lu6P9ZQohMtUnQXzHe9PuqahbOYkfo/yEX8RR5XKZ76CQk+Q89lFNbbSQ6R82VO9ktvkxC/+ShdHeXiUxzizGofR8nMZgv75bOvBgLxFvwbPpHlB8bVkKrgctPL2A4KFPDiQ/ggXGvJ28iiurm3aqRIByfk+CIz7Cp5G6Mfjl8Cd6k2r8hBazhmfo7d5oMmK54tvDw9r3eXYywU5/f8dvgSYTijlz5Ec4ndo5eKRrBiDKjc6fMAUkM9Z9SyIeZ johnpgrasty@john-grastys-macbook-pro.local",
+    "salt-master": "10.0.0.101",
+    "salt-id": "opensmtpd",
+    "user-script": "sleep 10; fetch --no-verify-peer -o /root/minion.sh https://gist.githubusercontent.com/johngrasty/551ebef4f40c7be69ff2/raw/7a17c768838d4d550448d937e0f6a470271daad4/freebsd-salt-smartos.sh; /usr/local/bin/bash /root/minion.sh >/tmp/minion_setup.log 2>&1"
+  },
+  "internal_metadata": {}
+}
