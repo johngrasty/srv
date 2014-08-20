@@ -1,0 +1,77 @@
+### Manaaged by Salt - 2014-08-14 #####
+
+{% set nginx = pillar.get('nginx', {}) -%}
+{% set user = nginx.get('user', 'www') -%}
+{% set group = nginx.get('group', 'www') -%}
+
+user                    {{ user }} {{ group }};
+worker_processes        {{ grains['num_cpus'] }};
+worker_rlimit_nofile    100000;
+
+pid        /var/run/nginx.pid;
+
+
+events {
+    # After increasing this value You probably should increase limit
+    # of file descriptors (for example in start_precmd in startup script)
+    worker_connections  2048;
+}
+
+http {
+    include       /opt/local/etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    log_format logentry '[$time_local] IP:$remote_addr - USER:$remote_user  '
+                    'REQUEST:"$request" STATUS:$status BYTES_SENT:$body_bytes_sent '
+                    'REFERER:"$http_referer" USER_AGENT:"$http_user_agent"';
+
+    log_format le_json '"time": "$time_iso8601", '
+             '"remote_addr": "$remote_addr", '
+             '"remote_user": "$remote_user", '
+             '"body_bytes_sent": "$body_bytes_sent", '
+             '"request_time": "$request_time", '
+             '"status": "$status", '
+             '"request": "$request", '
+             '"request_method": "$request_method", '
+             '"http_referrer": "$http_referer", '
+             '"http_user_agent": "$http_user_agent"';
+
+
+    access_log              /var/log/nginx/access.log le_json;
+    error_log               /var/log/nginx/error.log warn;
+
+    sendfile                on;
+    directio                4m;
+
+    keepalive_timeout       70;
+
+    client_max_body_size    100m;
+
+    gzip                    on;
+    gzip_disable            "msie6";
+    gzip_comp_level         6;
+    gzip_vary               on;
+    gzip_proxied            any;
+    gzip_buffers            16 8k;
+    gzip_types       text/plain application/xml text/css text/js text/xml application/x-javascript text/javascript application/json application/xml+rss;
+
+    proxy_buffering on;
+    proxy_buffers 32 16k;
+
+    open_file_cache          max=10000 inactive=30s;
+    open_file_cache_valid    60s;
+    open_file_cache_min_uses 2;
+    open_file_cache_errors   on;
+
+    fastcgi_read_timeout    300; 
+
+
+
+
+    upstream php_backend {
+               server 127.0.0.1:9000;
+        }
+
+    include /opt/local/etc/nginx/sites-enabled/*;
+
+}
