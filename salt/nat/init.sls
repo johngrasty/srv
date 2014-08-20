@@ -22,12 +22,21 @@ ipv4-forwarding:
     - source: salt://nat/files/ipf.conf
     - mode: 644      # function declaration
 
+validate_ipf:
+  cmd.run:
+    - name: ipf -n -f /etc/ipf/ipf.conf && ipnat -n -f /etc/ipf/ipnat.conf
+    - require:
+      - file: /etc/ipf/ipf.conf
+      - file: /etc/ipf/ipnat.conf
+
 ipfilter:
   service:
     - running
     - enable: True
     - watch:
       - file: /etc/ipf/ipf.conf
+    - require:
+      - cmd: validate_ipf
 
 /etc/ipf/ipf.sh:               # ID declaration
   file:
