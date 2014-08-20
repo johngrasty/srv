@@ -1,8 +1,19 @@
 #Enable NFS
 
+/backups:
+  file.directory:
+    - dir_mode: 755
+    - file_mode: 644
+    - user: admin
+    - group: adm
+    - makedirs: True
+    - clean: False
+    - order: 1
+
 rpc/bind:
   service.running:
     - enable: True
+
 
 nfs/status:
   service.running:
@@ -19,20 +30,11 @@ nfs/client:
       - file: /etc/vfstab
 
 #Add line to vfstab
-/backups:
-  file.directory:
-    - dir_mode: 755
-    - file_mode: 644
-    - owner: admin
-    - group: adm
-    - makedirs: True
-    - clean: False
 
 /etc/vfstab:
   file.append:
     - text:
       - {{ salt['pillar.get']('server:ovh1:ip')}}:{{ salt['pillar.get']('server:ovh1:path')}}/{{ salt['pillar.get']('nfs:suffix')}} -  /backups nfs - yes -
-
 
 
 # /backups:
